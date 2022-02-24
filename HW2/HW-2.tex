@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[margin=.5in]{geometry}
+%opening
+\title{CS 39543: HW 2}
+\author{Theadora Williams}
+
+\begin{document}
+\maketitle
+
+\section{\small{Baseline Results}}
+\subsection{\small{Full Data }}
+\begin{itemize}
+\item J48: Correctly classfied $73.83 \% $
+\item Naive Bayes: Correctly classfied $76.30 \%$
+\item Bayes Net: Correctly classfied $74.35 \%$
+\item Logistic Regression: Correctly classfied $77.21 \%$
+\end{itemize}
+
+\subsection{\small{Training Data (all 0's deleted)}}
+\begin{itemize}
+\item J48: Correctly classfied $79.34 \%$
+\item Naive Bayes: Correctly classfied $77.81 \%$
+\item Bayes Net: Correctly classfied $76.53 \%$
+\item Logistic Regression: Correctly classfied $77.81 \%$
+\end{itemize}
+
+\section{\small{Predicting missing values }}
+\subsection{\small{Predicting missing values using Mean }}
+\begin{itemize}
+\item J48: Correctly classfied $73.30 \%$
+\item Naive Bayes: Correctly classfied $74.61 \%$
+\item Bayes Net: Correctly classfied $74.87 \%$
+\item Logistic Regression: Correctly classfied $77.34 \%$
+\end{itemize}
+
+\subsection{\small{Predicting missing values using Median }}
+\begin{itemize}
+\item J48: Correctly classfied $73.57 \%$
+\item Naive Bayes: Correctly classfied $74.87 \%$
+\item Bayes Net: Correctly classfied $74.48 \%$
+\item Logistic Regression: Correctly classfied $77.47 \%$
+\end{itemize}
+
+\subsection{\small{Predicting missing values using Linear Regression }}
+\begin{itemize}
+\item J48: Correctly classfied $73.57 \%$
+\item Naive Bayes: Correctly classfied $76.30 \%$
+\item Bayes Net: Correctly classfied $74.87 \%$
+\item Logistic Regression: Correctly classfied $77.34 \%$
+\end{itemize}
+
+\section{\small{Randomness of missing skin and insuling values}}
+\begin{itemize}
+\item The presence of the skin and insulin attributes are correlated at $66\%$
+\end{itemize}
+I binarized data in skin and insu based off it's presence, here are the results for predicting their presence:
+
+\subsection{\small{Predicting insu }}
+\begin{itemize}
+\item J48: Correctly classfied $79.30 \%$
+\item Naive Bayes: Correctly classfied $78.78 \%$
+\item Bayes Net: Correctly classfied $79.95 \%$
+\item Logistic Regression: Correctly classfied $81.38 \%$
+\end{itemize}
+
+\subsection{\small{Predicting skin }}
+\begin{itemize}
+\item J48: Correctly classfied $80.2083 \%$
+\item Naive Bayes: Correctly classfied $82.16 \%$
+\item Bayes Net: Correctly classfied $81.38 \%$
+\item Logistic Regression: Correctly classfied $81.25 \%$
+\end{itemize}
+
+\section{\small{Visualization with means}}
+\includegraphics[width=\textwidth]{Regressed_diabetes}
+
+\end{document}
