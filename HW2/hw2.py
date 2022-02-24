@@ -63,6 +63,10 @@ def fill_with_mean(df):
     """ Given a df, return a copy where blanks have been filled with the mean for their column. """
     return df.replace(0, df.mean(axis=0))
 
+def fill_with_median(df):
+    """ Given a df, return a copy where blanks have been filled with the median for their column. """
+    return df.replace(0, df.median(axis=0))
+
 def fill_column_with_regression(df, target, features):
     """ Given a df, return a copy with 0's replaced by linear regression using features  """
     print("\nReplacing null-values in dataframe with linear regression. Target: ", target, "Features: ", features)
@@ -78,7 +82,7 @@ data = scipy_arff.loadarff('diabetes.arff')
 df = pd.DataFrame(data[0])
 
 training_df = df[(df['mass'] > 0) & (df['pres'] > 0) & (df['plas'] > 0) & (df['skin'] > 0) & (df['insu'] > 0)]
-training_df.drop('class', axis=1, inplace=True)
+#training_df.drop('class', axis=1, inplace=True)
 
 testing_df = df[(df['mass'] <= 0) | (df['pres'] <= 0) | (df['plas'] <= 0) | (df['skin'] <= 0) | (df['insu'] <= 0)]
 
@@ -97,9 +101,14 @@ print(df.corr())
 print("\n Correlations between data points (all 0's removed)")
 print(training_df.corr())
 
+print("\n\n Creating df with data in skin/insu binarized by presence")
+write_arff('diabetes_skin_insu_binarized.arff', convert_features_to_bool(df, ['skin', 'insu']))
 
 print("\n\n Creating df with 0's replaced by mean column values ")
 write_arff('diabetes_mean.arff', fill_with_mean(df))
+
+print("\n\n Creating df with 0's replaced by median column values ")
+write_arff('diabetes_median.arff', fill_with_median(df))
 
 print("\n\n Calculating regression factors using other data points")
 for t in ['skin', 'insu', 'mass', 'plas', 'pres']:
